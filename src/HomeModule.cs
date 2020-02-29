@@ -11,8 +11,10 @@ namespace SimpleInfoServer
         {
             Get("/", async (req, res, routeData) =>
             {
+                var machineName = Environment.MachineName;
                 var version = configuration.GetSection("Version").Value;
-                await res.WriteAsync($"Server: {Environment.MachineName}, Version: {version}");
+                var now = DateTime.Now.ToString();
+                await res.WriteAsync($"Server: <b>{machineName}</b>, Version: <b>{version}</b>, Date: <b>{now}</b>");
             });
 
             Get("/healthcheck", async (req, res, routeData) =>
