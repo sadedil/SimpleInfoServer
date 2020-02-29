@@ -14,7 +14,7 @@ namespace SimpleInfoServer
                 var machineName = Environment.MachineName;
                 var version = configuration.GetSection("Version").Value;
                 var now = DateTime.Now.ToString();
-                await res.WriteAsync($"Server: <b>{machineName}</b>, Version: <b>{version}</b>, Date: <b>{now}</b>");
+                await res.WriteAsync($"<html>Server: <b>{machineName}</b>, Version: <b>{version}</b>, Date: <b>{now}</b></html>");
             });
 
             Get("/healthcheck", async (req, res, routeData) =>
